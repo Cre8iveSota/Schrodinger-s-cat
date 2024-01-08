@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class ConnectToServer : MonoBehaviour
+using Photon.Pun;
+using UnityEngine.SceneManagement;
+public class ConnectToServer : MonoBehaviourPunCallbacks
 {
-    // Start is called before the first frame update
     void Start()
     {
-        
+        // Starting the procces of conecting server!
+        PhotonNetwork.ConnectUsingSettings();
     }
 
-    // Update is called once per frame
-    void Update()
+    // Once we are successfully connected to just go ahead load up our maim menu
+    public override void OnConnectedToMaster()
     {
-        
+        SceneManager.LoadScene("Main Menu");
     }
 }
